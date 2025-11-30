@@ -1,0 +1,12 @@
+{
+  "name": "vikash-engineering-works-shop",
+  "version": "1.0.0",
+  "description": "Vikash Engineering Works Shop - Blazor Server Application",
+  "scripts": {
+    "build:css": "tailwindcss -i ./wwwroot/app.css -o ./wwwroot/app.min.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
+

@@ -4,70 +4,57 @@
 
 <PageTitle>Admin Dashboard - Vikash Engineering Works Shop</PageTitle>
 
-<MudText Typo="Typo.h4" GutterBottom="true">Admin Dashboard</MudText>
+<h1 class="text-2xl font-bold mb-6 text-gray-800">Admin Dashboard</h1>
 
-<MudGrid>
-    <MudItem xs="12" sm="6" md="3">
-        <MudCard Elevation="2">
-            <MudCardContent>
-                <MudText Typo="Typo.h6">Total Orders</MudText>
-                <MudText Typo="Typo.h4" Color="Color.Primary">0</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" sm="6" md="3">
-        <MudCard Elevation="2">
-            <MudCardContent>
-                <MudText Typo="Typo.h6">Total Products</MudText>
-                <MudText Typo="Typo.h4" Color="Color.Secondary">0</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" sm="6" md="3">
-        <MudCard Elevation="2">
-            <MudCardContent>
-                <MudText Typo="Typo.h6">Total Customers</MudText>
-                <MudText Typo="Typo.h4" Color="Color.Success">0</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" sm="6" md="3">
-        <MudCard Elevation="2">
-            <MudCardContent>
-                <MudText Typo="Typo.h6">Revenue</MudText>
-                <MudText Typo="Typo.h4" Color="Color.Info">₹0</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-</MudGrid>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-sm font-medium text-gray-500 mb-2">Total Orders</h3>
+        <p class="text-3xl font-bold text-blue-600">0</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-sm font-medium text-gray-500 mb-2">Total Products</h3>
+        <p class="text-3xl font-bold text-gray-600">0</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-sm font-medium text-gray-500 mb-2">Total Customers</h3>
+        <p class="text-3xl font-bold text-green-600">0</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-sm font-medium text-gray-500 mb-2">Revenue</h3>
+        <p class="text-3xl font-bold text-indigo-600">₹0</p>
+    </div>
+</div>
 
-<MudGrid Class="mt-4">
-    <MudItem xs="12">
-        <MudCard Elevation="2">
-            <MudCardContent>
-                <MudText Typo="Typo.h6" GutterBottom="true">Recent Orders</MudText>
-                <MudTable Items="@orders" Hover="true" Striped="true">
-                    <HeaderContent>
-                        <MudTh>Order ID</MudTh>
-                        <MudTh>Customer</MudTh>
-                        <MudTh>Date</MudTh>
-                        <MudTh>Amount</MudTh>
-                        <MudTh>Status</MudTh>
-                    </HeaderContent>
-                    <RowTemplate>
-                        <MudTd DataLabel="Order ID">@context.OrderId</MudTd>
-                        <MudTd DataLabel="Customer">@context.CustomerName</MudTd>
-                        <MudTd DataLabel="Date">@context.OrderDate.ToShortDateString()</MudTd>
-                        <MudTd DataLabel="Amount">₹@context.Amount</MudTd>
-                        <MudTd DataLabel="Status">
-                            <MudBadge Content="@context.Status" Color="Color.Success" />
-                        </MudTd>
-                    </RowTemplate>
-                </MudTable>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-</MudGrid>
+<div class="bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-lg font-semibold mb-4 text-gray-800">Recent Orders</h2>
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @foreach (var order in orders)
+                {
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">@order.OrderId</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">@order.CustomerName</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">@order.OrderDate.ToShortDateString()</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">₹@order.Amount</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">@order.Status</span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @code {
     private List<Order> orders = new();
@@ -90,4 +77,3 @@
         public string Status { get; set; } = string.Empty;
     }
 }
-

@@ -4,43 +4,155 @@
 
 <PageTitle>Services - Vikash Engineering Works Shop</PageTitle>
 
-<MudText Typo="Typo.h4" GutterBottom="true">Our Services</MudText>
+<div class="container mx-auto px-6 py-12 sm:py-16 md:py-20">
+    <!-- Hero Section -->
+    <div class="text-center mb-12 sm:mb-16">
+        <div class="flex items-center justify-center gap-2 mb-4">
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">Our Services</h3>
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">Comprehensive Engineering Solutions</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+            We provide comprehensive maintenance, custom fabrication, CNC machining, and emergency repair solutions designed to keep your operations running smoothly.
+        </p>
+    </div>
 
-<MudGrid>
-    <MudItem xs="12" md="6">
-        <MudCard Elevation="3">
-            <MudCardContent>
-                <MudIcon Icon="@Icons.Material.Filled.Build" Size="Size.Large" Color="Color.Primary" />
-                <MudText Typo="Typo.h5" GutterBottom="true">Engineering Solutions</MudText>
-                <MudText>Comprehensive engineering solutions tailored to your needs.</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" md="6">
-        <MudCard Elevation="3">
-            <MudCardContent>
-                <MudIcon Icon="@Icons.Material.Filled.Settings" Size="Size.Large" Color="Color.Primary" />
-                <MudText Typo="Typo.h5" GutterBottom="true">Maintenance & Repair</MudText>
-                <MudText>Expert maintenance and repair services for all engineering equipment.</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" md="6">
-        <MudCard Elevation="3">
-            <MudCardContent>
-                <MudIcon Icon="@Icons.Material.Filled.Construction" Size="Size.Large" Color="Color.Primary" />
-                <MudText Typo="Typo.h5" GutterBottom="true">Custom Fabrication</MudText>
-                <MudText>Custom fabrication services for specialized engineering requirements.</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" md="6">
-        <MudCard Elevation="3">
-            <MudCardContent>
-                <MudIcon Icon="@Icons.Material.Filled.Support" Size="Size.Large" Color="Color.Primary" />
-                <MudText Typo="Typo.h5" GutterBottom="true">Consultation</MudText>
-                <MudText>Expert consultation services for your engineering projects.</MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-</MudGrid>
+    <!-- Services Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 mb-16">
+        <!-- Service 1 -->
+        <div class="bg-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500 z-0"></div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-300 shadow-sm">
+                    <i class="fa-solid fa-wrench text-blue-600 text-2xl group-hover:text-white transition"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">CNC Machining</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Precision CNC machining services for complex parts and components. Our state-of-the-art equipment ensures accuracy and consistency in every project.
+                </p>
+                <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>3-Axis & 5-Axis Machining</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Prototype Development</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Quality Assurance</span>
+                    </li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border-2 border-blue-600 text-blue-700 font-bold hover:bg-blue-600 hover:text-white transition duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="bg-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500 z-0"></div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-600 transition duration-300 shadow-sm">
+                    <i class="fa-solid fa-hammer text-orange-600 text-2xl group-hover:text-white transition"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">Custom Fabrication</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Custom fabrication services for specialized engineering requirements. From design to completion, we handle projects of all sizes.
+                </p>
+                <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Metal Fabrication</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Welding Services</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Custom Design</span>
+                    </li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border-2 border-orange-600 text-orange-700 font-bold hover:bg-orange-600 hover:text-white transition duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="bg-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500 z-0"></div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition duration-300 shadow-sm">
+                    <i class="fa-solid fa-tools text-green-600 text-2xl group-hover:text-white transition"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">Maintenance & Repair</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Expert maintenance and repair services for all engineering equipment. 24/7 support to keep your operations running smoothly.
+                </p>
+                <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Preventive Maintenance</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Emergency Repairs</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>24/7 Support</span>
+                    </li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border-2 border-green-600 text-green-700 font-bold hover:bg-green-600 hover:text-white transition duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="bg-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500 z-0"></div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition duration-300 shadow-sm">
+                    <i class="fa-solid fa-user-tie text-purple-600 text-2xl group-hover:text-white transition"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">Consultation</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Expert consultation services for your engineering projects. Get professional advice and solutions tailored to your needs.
+                </p>
+                <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Project Planning</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Technical Advice</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Cost Optimization</span>
+                    </li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border-2 border-purple-600 text-purple-700 font-bold hover:bg-purple-600 hover:text-white transition duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-slate-900 text-white p-8 sm:p-12 rounded-2xl text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Get Started?</h2>
+        <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+            Contact us today to discuss your engineering needs and discover how we can help bring your project to life.
+        </p>
+        <a href="/contact" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1">
+            Contact Us Now
+        </a>
+    </div>
+</div>

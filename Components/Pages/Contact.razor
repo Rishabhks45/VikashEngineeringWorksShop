@@ -4,45 +4,135 @@
 
 <PageTitle>Contact Us - Vikash Engineering Works Shop</PageTitle>
 
-<MudText Typo="Typo.h4" GutterBottom="true">Contact Us</MudText>
+<div class="container mx-auto px-6 py-12 sm:py-16 md:py-20">
+    <!-- Hero Section -->
+    <div class="text-center mb-12 sm:mb-16">
+        <div class="flex items-center justify-center gap-2 mb-4">
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">Get In Touch</h3>
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">Contact Us</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+            Have a question or need assistance? We're here to help. Reach out to us and we'll get back to you as soon as possible.
+        </p>
+    </div>
 
-<MudGrid>
-    <MudItem xs="12" md="6">
-        <MudCard Elevation="3">
-            <MudCardContent>
-                <MudText Typo="Typo.h5" GutterBottom="true">Get in Touch</MudText>
-                <MudTextField Label="Name" Variant="Variant.Outlined" @bind-Value="@name" Class="mt-4" />
-                <MudTextField Label="Email" Variant="Variant.Outlined" @bind-Value="@email" Class="mt-4" />
-                <MudTextField Label="Phone" Variant="Variant.Outlined" @bind-Value="@phone" Class="mt-4" />
-                <MudTextField Label="Message" Variant="Variant.Outlined" Lines="5" @bind-Value="@message" Class="mt-4" />
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Class="mt-4">Send Message</MudButton>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" md="6">
-        <MudCard Elevation="3">
-            <MudCardContent>
-                <MudText Typo="Typo.h5" GutterBottom="true">Contact Information</MudText>
-                <MudText GutterBottom="true">
-                    <MudIcon Icon="@Icons.Material.Filled.LocationOn" /> Address: Your Address Here
-                </MudText>
-                <MudText GutterBottom="true">
-                    <MudIcon Icon="@Icons.Material.Filled.Phone" /> Phone: +91-1234567890
-                </MudText>
-                <MudText GutterBottom="true">
-                    <MudIcon Icon="@Icons.Material.Filled.Email" /> Email: info@vikashengineering.com
-                </MudText>
-                <MudText GutterBottom="true">
-                    <MudIcon Icon="@Icons.Material.Filled.Schedule" /> Hours: Mon-Sat 9:00 AM - 6:00 PM
-                </MudText>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-</MudGrid>
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <!-- Contact Form -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
+            <form class="space-y-5">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Name <span class="text-orange-600">*</span></label>
+                    <input type="text" @bind="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="Your full name" />
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email <span class="text-orange-600">*</span></label>
+                    <input type="email" @bind="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="your.email@example.com" />
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                    <input type="tel" @bind="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="+91 98765 43210" />
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                    <input type="text" @bind="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="What is this regarding?" />
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Message <span class="text-orange-600">*</span></label>
+                    <textarea @bind="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition resize-none" placeholder="Tell us about your requirements..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-slate-900 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group">
+                    <span>Send Message</span>
+                    <i class="fa-solid fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="space-y-6">
+            <!-- Contact Info Card -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Contact Information</h2>
+                <div class="space-y-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-location-dot text-orange-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-slate-900 mb-1">Address</h3>
+                            <p class="text-gray-600">123 Industrial Area, City, State 123456</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-phone text-blue-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-slate-900 mb-1">Phone</h3>
+                            <a href="tel:+919876543210" class="text-gray-600 hover:text-orange-600 transition">+91 98765 43210</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-envelope text-green-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-slate-900 mb-1">Email</h3>
+                            <a href="mailto:info@vikashengineering.com" class="text-gray-600 hover:text-orange-600 transition break-all">info@vikashengineering.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-clock text-purple-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-slate-900 mb-1">Business Hours</h3>
+                            <p class="text-gray-600">Mon - Sat: 9:00 AM - 7:00 PM</p>
+                            <p class="text-gray-600 text-sm">Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Card -->
+            <div class="bg-slate-900 rounded-2xl shadow-lg p-6 sm:p-8 text-white">
+                <h2 class="text-2xl font-bold mb-4">Follow Us</h2>
+                <p class="text-gray-300 mb-6">Stay connected with us on social media for updates and news.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="w-12 h-12 bg-white/10 hover:bg-orange-600 rounded-lg flex items-center justify-center transition" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/10 hover:bg-orange-600 rounded-lg flex items-center justify-center transition" aria-label="Twitter">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/10 hover:bg-orange-600 rounded-lg flex items-center justify-center transition" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/10 hover:bg-orange-600 rounded-lg flex items-center justify-center transition" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="bg-gray-100 rounded-2xl shadow-lg overflow-hidden h-64">
+                <div class="w-full h-full flex items-center justify-center text-gray-400">
+                    <div class="text-center">
+                        <i class="fa-solid fa-map-location-dot text-4xl mb-2"></i>
+                        <p class="text-sm">Map Location</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     private string name = string.Empty;
     private string email = string.Empty;
     private string phone = string.Empty;
+    private string subject = string.Empty;
     private string message = string.Empty;
 }

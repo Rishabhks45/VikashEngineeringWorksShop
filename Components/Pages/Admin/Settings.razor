@@ -4,18 +4,30 @@
 
 <PageTitle>Settings - Vikash Engineering Works Shop</PageTitle>
 
-<MudText Typo="Typo.h4" GutterBottom="true">Settings</MudText>
+<h1 class="text-2xl font-bold mb-6 text-gray-800">Settings</h1>
 
-<MudCard Elevation="2">
-    <MudCardContent>
-        <MudText Typo="Typo.h6" GutterBottom="true">Application Settings</MudText>
-        <MudTextField Label="Shop Name" Variant="Variant.Outlined" Value="@shopName" ValueChanged="@((string value) => shopName = value)" />
-        <MudTextField Label="Email" Variant="Variant.Outlined" Value="@email" ValueChanged="@((string value) => email = value)" Class="mt-4" />
-        <MudTextField Label="Phone" Variant="Variant.Outlined" Value="@phone" ValueChanged="@((string value) => phone = value)" Class="mt-4" />
-        <MudTextField Label="Address" Variant="Variant.Outlined" Lines="3" Value="@address" ValueChanged="@((string value) => address = value)" Class="mt-4" />
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4">Save Settings</MudButton>
-    </MudCardContent>
-</MudCard>
+<div class="bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-lg font-semibold mb-4 text-gray-800">Application Settings</h2>
+    <div class="space-y-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Shop Name</label>
+            <input type="text" @bind="shopName" @bind:event="oninput" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email" @bind="email" @bind:event="oninput" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+            <input type="tel" @bind="phone" @bind:event="oninput" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+            <textarea @bind="address" @bind:event="oninput" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Save Settings</button>
+    </div>
+</div>
 
 @code {
     private string shopName = "Vikash Engineering Works Shop";
@@ -23,4 +35,3 @@
     private string phone = "+91-1234567890";
     private string address = "Your Address Here";
 }
-

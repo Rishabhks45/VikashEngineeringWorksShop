@@ -4,34 +4,123 @@
 
 <PageTitle>About Us - Vikash Engineering Works Shop</PageTitle>
 
-<MudText Typo="Typo.h4" GutterBottom="true">About Us</MudText>
+<div class="container mx-auto px-6 py-12 sm:py-16 md:py-20">
+    <!-- Hero Section -->
+    <div class="text-center mb-12 sm:mb-16">
+        <div class="flex items-center justify-center gap-2 mb-4">
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">About Us</h3>
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">Mastering the Art of Industrial Fabrication</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+            Vikash Engineering Works Shop is a pioneer in delivering top-tier engineering solutions. From heavy machinery to precision tools, we ensure that every project meets the highest industry standards.
+        </p>
+    </div>
 
-<MudCard Elevation="3">
-    <MudCardContent>
-        <MudText Typo="Typo.h5" GutterBottom="true">Vikash Engineering Works Shop</MudText>
-        <MudText GutterBottom="true">
-            Vikash Engineering Works Shop is a leading provider of engineering solutions, committed to delivering excellence in every project.
-            With years of experience in the industry, we have built a reputation for quality, reliability, and customer satisfaction.
-        </MudText>
-        <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-4">Our Mission</MudText>
-        <MudText>
-            To provide high-quality engineering products and services that meet the diverse needs of our customers while maintaining
-            the highest standards of quality and professionalism.
-        </MudText>
-        <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-4">Our Values</MudText>
-        <MudStack>
-            <MudText>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Small" Color="Color.Success" /> Quality First
-            </MudText>
-            <MudText>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Small" Color="Color.Success" /> Customer Satisfaction
-            </MudText>
-            <MudText>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Small" Color="Color.Success" /> Innovation
-            </MudText>
-            <MudText>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Small" Color="Color.Success" /> Integrity
-            </MudText>
-        </MudStack>
-    </MudCardContent>
-</MudCard>
+    <!-- Main Content -->
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 mb-16">
+        <!-- Image Section -->
+        <div class="relative group">
+            <div class="absolute -inset-2 bg-gradient-to-r from-orange-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Workshop" class="rounded-lg shadow-2xl w-full object-cover h-80 md:h-96">
+                <div class="absolute -bottom-6 -right-6 bg-slate-900 text-white p-6 rounded-lg shadow-xl hidden md:block border-l-4 border-orange-500">
+                    <p class="text-3xl font-bold text-orange-500">15+</p>
+                    <p class="text-xs uppercase tracking-widest text-gray-400">Years of<br>Experience</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6">Who We Are</h2>
+            <p class="text-gray-600 leading-relaxed mb-6 text-base sm:text-lg">
+                Vikash Engineering Works Shop is a leading provider of engineering solutions, committed to delivering excellence in every project. With years of experience in the industry, we have built a reputation for quality, reliability, and customer satisfaction.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-8 text-base sm:text-lg">
+                Our team of expert engineers and technicians work tirelessly to provide innovative solutions that meet the diverse needs of our customers while maintaining the highest standards of quality and professionalism.
+            </p>
+        </div>
+    </div>
+
+    <!-- Mission & Values -->
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12 mb-16">
+        <!-- Mission -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+            <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                <i class="fa-solid fa-bullseye text-orange-600 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+            <p class="text-gray-600 leading-relaxed">
+                To provide high-quality engineering products and services that meet the diverse needs of our customers while maintaining the highest standards of quality and professionalism.
+            </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                <i class="fa-solid fa-eye text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">Our Vision</h3>
+            <p class="text-gray-600 leading-relaxed">
+                To become the most trusted and innovative engineering solutions provider, recognized for excellence, integrity, and customer-centric approach in the industry.
+            </p>
+        </div>
+    </div>
+
+    <!-- Values -->
+    <div class="mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-8 text-center">Our Core Values</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-circle-check text-green-600 text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">Quality First</h4>
+                <p class="text-gray-600 text-sm">Uncompromising commitment to excellence in every project</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-heart text-orange-600 text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">Customer Satisfaction</h4>
+                <p class="text-gray-600 text-sm">Your success is our priority and ultimate goal</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-lightbulb text-blue-600 text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">Innovation</h4>
+                <p class="text-gray-600 text-sm">Embracing new technologies and creative solutions</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
+                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-shield-halved text-slate-600 text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">Integrity</h4>
+                <p class="text-gray-600 text-sm">Transparent, honest, and ethical in all dealings</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+        <div class="text-center">
+            <p class="text-3xl sm:text-4xl font-bold text-slate-900">500+</p>
+            <p class="text-sm text-gray-500 mt-1">Projects Completed</p>
+        </div>
+        <div class="text-center">
+            <p class="text-3xl sm:text-4xl font-bold text-slate-900">120+</p>
+            <p class="text-sm text-gray-500 mt-1">Happy Clients</p>
+        </div>
+        <div class="text-center">
+            <p class="text-3xl sm:text-4xl font-bold text-slate-900">50+</p>
+            <p class="text-sm text-gray-500 mt-1">Expert Engineers</p>
+        </div>
+        <div class="text-center">
+            <p class="text-3xl sm:text-4xl font-bold text-slate-900">15</p>
+            <p class="text-sm text-gray-500 mt-1">Awards Won</p>
+        </div>
+    </div>
+</div>
