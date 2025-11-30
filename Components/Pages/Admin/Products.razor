@@ -1,0 +1,55 @@
+@page "/admin/products"
+@layout AdminLayout
+@rendermode InteractiveServer
+
+<PageTitle>Products Management - Vikash Engineering Works Shop</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Products Management</MudText>
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Class="mb-4">Add New Product</MudButton>
+
+<MudCard Elevation="2">
+    <MudCardContent>
+        <MudTable Items="@products" Hover="true" Striped="true">
+            <HeaderContent>
+                <MudTh>Product Name</MudTh>
+                <MudTh>Category</MudTh>
+                <MudTh>Price</MudTh>
+                <MudTh>Stock</MudTh>
+                <MudTh>Actions</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Product Name">@context.Name</MudTd>
+                <MudTd DataLabel="Category">@context.Category</MudTd>
+                <MudTd DataLabel="Price">₹@context.Price</MudTd>
+                <MudTd DataLabel="Stock">@context.Stock</MudTd>
+                <MudTd DataLabel="Actions">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" />
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private List<Product> products = new();
+
+    protected override void OnInitialized()
+    {
+        // Sample data - replace with actual data from your service
+        products = new List<Product>
+        {
+            new Product { Name = "Sample Product", Category = "Engineering", Price = 1000, Stock = 10 }
+        };
+    }
+
+    private class Product
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public int Stock { get; set; }
+    }
+}
+

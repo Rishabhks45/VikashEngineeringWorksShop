@@ -1,0 +1,48 @@
+@page "/contact"
+@layout ClientLayout
+@rendermode InteractiveServer
+
+<PageTitle>Contact Us - Vikash Engineering Works Shop</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Contact Us</MudText>
+
+<MudGrid>
+    <MudItem xs="12" md="6">
+        <MudCard Elevation="3">
+            <MudCardContent>
+                <MudText Typo="Typo.h5" GutterBottom="true">Get in Touch</MudText>
+                <MudTextField Label="Name" Variant="Variant.Outlined" @bind-Value="@name" Class="mt-4" />
+                <MudTextField Label="Email" Variant="Variant.Outlined" @bind-Value="@email" Class="mt-4" />
+                <MudTextField Label="Phone" Variant="Variant.Outlined" @bind-Value="@phone" Class="mt-4" />
+                <MudTextField Label="Message" Variant="Variant.Outlined" Lines="5" @bind-Value="@message" Class="mt-4" />
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Class="mt-4">Send Message</MudButton>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <MudCard Elevation="3">
+            <MudCardContent>
+                <MudText Typo="Typo.h5" GutterBottom="true">Contact Information</MudText>
+                <MudText GutterBottom="true">
+                    <MudIcon Icon="@Icons.Material.Filled.LocationOn" /> Address: Your Address Here
+                </MudText>
+                <MudText GutterBottom="true">
+                    <MudIcon Icon="@Icons.Material.Filled.Phone" /> Phone: +91-1234567890
+                </MudText>
+                <MudText GutterBottom="true">
+                    <MudIcon Icon="@Icons.Material.Filled.Email" /> Email: info@vikashengineering.com
+                </MudText>
+                <MudText GutterBottom="true">
+                    <MudIcon Icon="@Icons.Material.Filled.Schedule" /> Hours: Mon-Sat 9:00 AM - 6:00 PM
+                </MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+@code {
+    private string name = string.Empty;
+    private string email = string.Empty;
+    private string phone = string.Empty;
+    private string message = string.Empty;
+}

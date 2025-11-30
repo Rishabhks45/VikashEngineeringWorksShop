@@ -1,0 +1,39 @@
+﻿@page "/"
+@layout ClientLayout
+@rendermode InteractiveServer
+
+<PageTitle>Home - Vikash Engineering Works Shop</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true" Align="Align.Center">Welcome to Vikash Engineering Works Shop</MudText>
+
+<MudGrid>
+    <MudItem xs="12" md="6">
+        <MudCard Elevation="3">
+            <MudCardContent>
+                <MudText Typo="Typo.h5" GutterBottom="true">Our Services</MudText>
+                <MudText>We provide high-quality engineering solutions for all your needs.</MudText>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/services" Class="mt-4">View Services</MudButton>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <MudCard Elevation="3">
+            <MudCardContent>
+                <MudText Typo="Typo.h5" GutterBottom="true">Our Products</MudText>
+                <MudText>Browse our wide range of engineering products and equipment.</MudText>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/products" Class="mt-4">View Products</MudButton>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+<MudGrid Class="mt-4">
+    <MudItem xs="12">
+        <MudCard Elevation="3">
+            <MudCardContent>
+                <MudText Typo="Typo.h5" GutterBottom="true">About Us</MudText>
+                <MudText>Vikash Engineering Works Shop is a leading provider of engineering solutions, committed to delivering excellence in every project.</MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>

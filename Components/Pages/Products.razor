@@ -1,0 +1,46 @@
+@page "/products"
+@layout ClientLayout
+@rendermode InteractiveServer
+
+<PageTitle>Products - Vikash Engineering Works Shop</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Our Products</MudText>
+
+<MudGrid>
+    @foreach (var product in products)
+    {
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard Elevation="3">
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">@product.Name</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary">@product.Category</MudText>
+                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="mt-2">₹@product.Price</MudText>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Class="mt-2">Add to Cart</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>
+
+@code {
+    private List<Product> products = new();
+
+    protected override void OnInitialized()
+    {
+        // Sample data - replace with actual data from your service
+        products = new List<Product>
+        {
+            new Product { Name = "Engineering Tool Set", Category = "Tools", Price = 2500 },
+            new Product { Name = "Precision Measuring Instrument", Category = "Instruments", Price = 5000 },
+            new Product { Name = "Industrial Component", Category = "Components", Price = 1500 }
+        };
+    }
+
+    private class Product
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+    }
+}
+

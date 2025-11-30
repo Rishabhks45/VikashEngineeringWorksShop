@@ -1,0 +1,58 @@
+@page "/admin/orders"
+@layout AdminLayout
+@rendermode InteractiveServer
+
+<PageTitle>Orders Management - Vikash Engineering Works Shop</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Orders Management</MudText>
+
+<MudCard Elevation="2">
+    <MudCardContent>
+        <MudTable Items="@orders" Hover="true" Striped="true">
+            <HeaderContent>
+                <MudTh>Order ID</MudTh>
+                <MudTh>Customer</MudTh>
+                <MudTh>Date</MudTh>
+                <MudTh>Amount</MudTh>
+                <MudTh>Status</MudTh>
+                <MudTh>Actions</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Order ID">@context.OrderId</MudTd>
+                <MudTd DataLabel="Customer">@context.CustomerName</MudTd>
+                <MudTd DataLabel="Date">@context.OrderDate.ToShortDateString()</MudTd>
+                <MudTd DataLabel="Amount">₹@context.Amount</MudTd>
+                <MudTd DataLabel="Status">
+                    <MudBadge Content="@context.Status" Color="Color.Success" />
+                </MudTd>
+                <MudTd DataLabel="Actions">
+                    <MudIconButton Icon="@Icons.Material.Filled.Visibility" Color="Color.Primary" Size="Size.Small" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Info" Size="Size.Small" />
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private List<Order> orders = new();
+
+    protected override void OnInitialized()
+    {
+        // Sample data - replace with actual data from your service
+        orders = new List<Order>
+        {
+            new Order { OrderId = "ORD-001", CustomerName = "Sample Customer", OrderDate = DateTime.Now, Amount = 5000, Status = "Pending" }
+        };
+    }
+
+    private class Order
+    {
+        public string OrderId { get; set; } = string.Empty;
+        public string CustomerName { get; set; } = string.Empty;
+        public DateTime OrderDate { get; set; }
+        public decimal Amount { get; set; }
+        public string Status { get; set; } = string.Empty;
+    }
+}
+

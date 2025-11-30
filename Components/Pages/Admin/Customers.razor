@@ -1,0 +1,53 @@
+@page "/admin/customers"
+@layout AdminLayout
+@rendermode InteractiveServer
+
+<PageTitle>Customers Management - Vikash Engineering Works Shop</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Customers Management</MudText>
+
+<MudCard Elevation="2">
+    <MudCardContent>
+        <MudTable Items="@customers" Hover="true" Striped="true">
+            <HeaderContent>
+                <MudTh>Name</MudTh>
+                <MudTh>Email</MudTh>
+                <MudTh>Phone</MudTh>
+                <MudTh>Total Orders</MudTh>
+                <MudTh>Actions</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Email">@context.Email</MudTd>
+                <MudTd DataLabel="Phone">@context.Phone</MudTd>
+                <MudTd DataLabel="Total Orders">@context.TotalOrders</MudTd>
+                <MudTd DataLabel="Actions">
+                    <MudIconButton Icon="@Icons.Material.Filled.Visibility" Color="Color.Primary" Size="Size.Small" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Info" Size="Size.Small" />
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private List<Customer> customers = new();
+
+    protected override void OnInitialized()
+    {
+        // Sample data - replace with actual data from your service
+        customers = new List<Customer>
+        {
+            new Customer { Name = "Sample Customer", Email = "customer@example.com", Phone = "1234567890", TotalOrders = 5 }
+        };
+    }
+
+    private class Customer
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+        public int TotalOrders { get; set; }
+    }
+}
+

@@ -1,0 +1,48 @@
+@inherits LayoutComponentBase
+@rendermode InteractiveServer
+
+<MudThemeProvider Theme="@theme" />
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
+        <MudText Typo="Typo.h6" Style="flex-grow: 1;">Vikash Engineering Works Shop - Admin</MudText>
+        <MudIconButton Icon="@Icons.Material.Filled.AccountCircle" Color="Color.Inherit" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="@drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavLink href="/admin/dashboard" Match="NavLinkMatch.All">
+            <MudNavLink Href="/admin/dashboard" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
+        </NavLink>
+        <NavLink href="/admin/products">
+            <MudNavLink Href="/admin/products" Icon="@Icons.Material.Filled.Inventory">Products</MudNavLink>
+        </NavLink>
+        <NavLink href="/admin/orders">
+            <MudNavLink Href="/admin/orders" Icon="@Icons.Material.Filled.ShoppingCart">Orders</MudNavLink>
+        </NavLink>
+        <NavLink href="/admin/customers">
+            <MudNavLink Href="/admin/customers" Icon="@Icons.Material.Filled.People">Customers</MudNavLink>
+        </NavLink>
+        <NavLink href="/admin/settings">
+            <MudNavLink Href="/admin/settings" Icon="@Icons.Material.Filled.Settings">Settings</MudNavLink>
+        </NavLink>
+        <MudDivider />
+        <NavLink href="/">
+            <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home">Back to Client</MudNavLink>
+        </NavLink>
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool drawerOpen = true;
+    private MudTheme theme = new();
+
+    private void ToggleDrawer()
+    {
+        drawerOpen = !drawerOpen;
+    }
+}
+
