@@ -5,10 +5,76 @@
 <PageTitle>Products - Vikash Engineering Works Shop</PageTitle>
 
 <div class="container mx-auto px-6 py-12">
-    <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">Our Products</h1>
-        <p class="text-gray-600 text-lg">Browse our wide range of engineering products and solutions</p>
+    <!-- Latest Products Section -->
+    <div class="mb-16">
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="w-12 h-[2px] bg-orange-600"></span>
+                <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">Latest Products</h3>
+                <span class="w-12 h-[2px] bg-orange-600"></span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">New Arrivals</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover our newest engineering solutions and cutting-edge products</p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+            @foreach (var product in latestProducts)
+            {
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-100 flex flex-col">
+                    <!-- Product Image -->
+                    <div class="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-100">
+                        <img src="@product.ImageUrl" alt="@product.Name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                        <div class="absolute top-2 left-2 bg-orange-600 text-white px-2 py-1 rounded-full text-[10px] sm:text-xs font-semibold">
+                            New
+                        </div>
+                        <div class="absolute top-2 right-2 bg-slate-900/70 text-white px-2 py-1 rounded-full text-[10px] sm:text-xs font-semibold">
+                            @product.Category
+                        </div>
+                    </div>
+
+                    <!-- Product Content -->
+                    <div class="p-3 sm:p-4 md:p-6 flex-grow flex flex-col">
+                        <!-- Title -->
+                        <h3 class="text-sm sm:text-base md:text-xl font-bold text-slate-900 mb-2 sm:mb-3 group-hover:text-orange-600 transition-colors line-clamp-2">
+                            @product.Name
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-[10px] sm:text-xs md:text-sm text-gray-600 leading-relaxed mb-3 sm:mb-4 flex-grow line-clamp-3">
+                            @product.Description
+                        </p>
+
+                        <!-- Amount Range -->
+                        <div class="mb-4 sm:mb-6">
+                            <p class="text-base sm:text-lg md:text-2xl font-bold text-orange-600 mb-1">
+                                ₹@FormatPrice(product.MinPrice) - ₹@FormatPrice(product.MaxPrice)
+                            </p>
+                            <p class="text-[10px] sm:text-xs text-gray-500">Price Range</p>
+                        </div>
+
+                        <!-- Contact Us Button -->
+                        <button @onclick="() => ContactUs(product.Id)" class="w-full bg-slate-900 text-white font-semibold py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-6 rounded-lg hover:bg-orange-600 transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 group/btn text-xs sm:text-sm md:text-base">
+                            <i class="fa-solid fa-phone text-xs sm:text-sm"></i>
+                            <span>Contact Us</span>
+                            <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-xs sm:text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
+
+    <!-- All Products Section -->
+    <div>
+        <div class="text-center mb-12">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="w-12 h-[2px] bg-orange-600"></span>
+                <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">All Products</h3>
+                <span class="w-12 h-[2px] bg-orange-600"></span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Our Products</h1>
+            <p class="text-gray-600 text-lg">Browse our wide range of engineering products and solutions</p>
+        </div>
 
     <div class="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
         @foreach (var product in products)
@@ -52,14 +118,50 @@
             </div>
         }
     </div>
+    </div>
 </div>
 
 @code {
     private List<Product> products = new();
+    private List<Product> latestProducts = new();
 
     protected override void OnInitialized()
     {
         // Sample data - replace with actual data from your service
+        latestProducts = new List<Product>
+        {
+            new Product 
+            { 
+                Id = 1,
+                Name = "CNC Machining Center", 
+                Category = "Machinery",
+                Description = "High-precision CNC machining center with advanced automation features. Perfect for complex industrial manufacturing and fabrication tasks.",
+                ImageUrl = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                MinPrice = 500000,
+                MaxPrice = 1500000
+            },
+            new Product 
+            { 
+                Id = 2,
+                Name = "Hydraulic Press System", 
+                Category = "Equipment",
+                Description = "Heavy-duty hydraulic press system designed for industrial applications. Features robust construction and reliable performance.",
+                ImageUrl = "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                MinPrice = 300000,
+                MaxPrice = 800000
+            },
+            new Product 
+            { 
+                Id = 3,
+                Name = "Precision Tool Set", 
+                Category = "Tools",
+                Description = "Complete precision tool set for engineering and fabrication work. Includes all essential tools for professional workshops.",
+                ImageUrl = "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                MinPrice = 15000,
+                MaxPrice = 50000
+            }
+        };
+
         products = new List<Product>
         {
             new Product 
