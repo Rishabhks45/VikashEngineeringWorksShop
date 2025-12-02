@@ -11,7 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddHttpClient();
 
 // Add Language Service as Singleton so all components share the same instance
-builder.Services.AddSingleton<LanguageService>();
+builder.Services.AddScoped<LanguageService>();
 
 var app = builder.Build();
 
