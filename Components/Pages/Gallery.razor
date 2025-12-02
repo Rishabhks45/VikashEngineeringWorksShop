@@ -1,0 +1,326 @@
+@page "/gallery"
+@layout ClientLayout
+@rendermode InteractiveServer
+@using VikashEngineeringWorksShop.Services
+@inject LanguageService LanguageService
+@implements IDisposable
+
+<PageTitle>Gallery - Vikash Engineering Works Shop</PageTitle>
+
+<div class="container mx-auto px-6 py-12">
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+        <div class="flex items-center justify-center gap-2 mb-4">
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">@Translations.Get("Our Gallery", LanguageService.CurrentLanguage)</h3>
+            <span class="w-12 h-[2px] bg-orange-600"></span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">@Translations.Get("Project Showcase", LanguageService.CurrentLanguage)</h1>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">@Translations.Get("Explore our engineering excellence through our completed projects and manufacturing capabilities", LanguageService.CurrentLanguage)</p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button 
+            @onclick='() => FilterGallery("all")' 
+            class="px-6 py-2 rounded-full font-semibold transition-all duration-300 @(selectedCategory == "all" ? "bg-orange-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300")">
+            @Translations.Get("All", LanguageService.CurrentLanguage)
+        </button>
+        @foreach (var category in categories)
+        {
+            <button 
+                @onclick="() => FilterGallery(category)" 
+                class="px-6 py-2 rounded-full font-semibold transition-all duration-300 @(selectedCategory == category ? "bg-orange-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300")">
+                @category
+            </button>
+        }
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+        @foreach (var item in filteredGalleryItems)
+        {
+            <div class="group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer" @onclick="() => OpenLightbox(item)">
+                <!-- Image -->
+                <div class="relative h-64 overflow-hidden bg-gray-100">
+                    <img src="@item.ImageUrl" alt="@item.Title" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Category Badge -->
+                    <div class="absolute top-3 left-3 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        @item.Category
+                    </div>
+
+                    <!-- View Icon Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="bg-white/90 backdrop-blur-sm rounded-full p-4">
+                            <i class="fa-solid fa-expand text-2xl text-orange-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-4">
+                    <h3 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-orange-600 transition-colors line-clamp-1">
+                        @item.Title
+                    </h3>
+                    <p class="text-sm text-gray-600 line-clamp-2">
+                        @item.Description
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (filteredGalleryItems.Count == 0)
+    {
+        <div class="text-center py-16">
+            <i class="fa-solid fa-images text-6xl text-gray-300 mb-4"></i>
+            <p class="text-gray-600 text-lg">@Translations.Get("No items found in this category", LanguageService.CurrentLanguage)</p>
+        </div>
+    }
+</div>
+
+<!-- Lightbox Modal -->
+@if (selectedItem != null)
+{
+    <div class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" @onclick="CloseLightbox" tabindex="0" @onkeydown="HandleKeyDown" style="outline: none;">
+        <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col" @onclick:stopPropagation="true">
+            <!-- Close Button -->
+            <button @onclick="CloseLightbox" class="absolute -top-12 right-0 text-white hover:text-orange-500 transition-colors text-2xl z-10">
+                <i class="fa-solid fa-times"></i>
+            </button>
+
+            <!-- Image -->
+            <div class="relative bg-gray-900 rounded-t-lg overflow-hidden">
+                <img src="@selectedItem.ImageUrl" alt="@selectedItem.Title" class="w-full h-auto max-h-[70vh] object-contain mx-auto" />
+            </div>
+
+            <!-- Content -->
+            <div class="bg-white rounded-b-lg p-6">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        @selectedItem.Category
+                    </span>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">@selectedItem.Title</h2>
+                <p class="text-gray-600">@selectedItem.Description</p>
+            </div>
+
+            <!-- Navigation Arrows -->
+            @if (filteredGalleryItems.Count > 1)
+            {
+                <button @onclick="PreviousImage" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-900 p-3 rounded-full transition-all duration-300">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button @onclick="NextImage" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-900 p-3 rounded-full transition-all duration-300">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private List<GalleryItem> galleryItems = new();
+    private List<GalleryItem> filteredGalleryItems = new();
+    private List<string> categories = new();
+    private string selectedCategory = "all";
+    private GalleryItem? selectedItem = null;
+
+    protected override void OnInitialized()
+    {
+        LanguageService.OnLanguageChanged += StateHasChanged;
+        
+        // Sample gallery data - replace with actual data from your service
+        galleryItems = new List<GalleryItem>
+        {
+            new GalleryItem 
+            { 
+                Id = 1,
+                Title = "CNC Machining Workshop",
+                Category = "Workshop",
+                Description = "State-of-the-art CNC machining facility with precision equipment",
+                ImageUrl = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 2,
+                Title = "Industrial Fabrication Unit",
+                Category = "Fabrication",
+                Description = "Heavy-duty fabrication unit for large-scale industrial projects",
+                ImageUrl = "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 3,
+                Title = "Precision Tool Manufacturing",
+                Category = "Manufacturing",
+                Description = "High-precision tool manufacturing and quality control",
+                ImageUrl = "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 4,
+                Title = "Custom Gear System",
+                Category = "Projects",
+                Description = "Custom-designed industrial gear system for heavy machinery",
+                ImageUrl = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 5,
+                Title = "Welding Station Setup",
+                Category = "Workshop",
+                Description = "Professional welding station with advanced safety features",
+                ImageUrl = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 6,
+                Title = "Quality Control Lab",
+                Category = "Facilities",
+                Description = "Modern quality control laboratory with precision instruments",
+                ImageUrl = "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 7,
+                Title = "Assembly Line Production",
+                Category = "Manufacturing",
+                Description = "Efficient assembly line for mass production",
+                ImageUrl = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 8,
+                Title = "Industrial Machinery Installation",
+                Category = "Projects",
+                Description = "Complete installation of industrial machinery system",
+                ImageUrl = "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 9,
+                Title = "Metal Fabrication Works",
+                Category = "Fabrication",
+                Description = "Precision metal fabrication for custom requirements",
+                ImageUrl = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 10,
+                Title = "CNC Programming Setup",
+                Category = "Workshop",
+                Description = "Advanced CNC programming and setup facility",
+                ImageUrl = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 11,
+                Title = "Product Testing Facility",
+                Category = "Facilities",
+                Description = "Comprehensive product testing and validation center",
+                ImageUrl = "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            },
+            new GalleryItem 
+            { 
+                Id = 12,
+                Title = "Custom Engineering Solution",
+                Category = "Projects",
+                Description = "Tailored engineering solution for specific client needs",
+                ImageUrl = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            }
+        };
+
+        // Extract unique categories
+        categories = galleryItems.Select(x => x.Category).Distinct().OrderBy(x => x).ToList();
+        
+        // Initialize filtered items
+        FilterGallery("all");
+    }
+
+    private void FilterGallery(string category)
+    {
+        selectedCategory = category;
+        if (category == "all")
+        {
+            filteredGalleryItems = galleryItems.ToList();
+        }
+        else
+        {
+            filteredGalleryItems = galleryItems.Where(x => x.Category == category).ToList();
+        }
+    }
+
+    private void OpenLightbox(GalleryItem item)
+    {
+        selectedItem = item;
+    }
+
+    private void CloseLightbox()
+    {
+        selectedItem = null;
+    }
+
+    private void PreviousImage()
+    {
+        if (selectedItem == null) return;
+        
+        var currentIndex = filteredGalleryItems.FindIndex(x => x.Id == selectedItem.Id);
+        if (currentIndex > 0)
+        {
+            selectedItem = filteredGalleryItems[currentIndex - 1];
+        }
+        else
+        {
+            selectedItem = filteredGalleryItems.Last();
+        }
+    }
+
+    private void NextImage()
+    {
+        if (selectedItem == null) return;
+        
+        var currentIndex = filteredGalleryItems.FindIndex(x => x.Id == selectedItem.Id);
+        if (currentIndex < filteredGalleryItems.Count - 1)
+        {
+            selectedItem = filteredGalleryItems[currentIndex + 1];
+        }
+        else
+        {
+            selectedItem = filteredGalleryItems.First();
+        }
+    }
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape")
+        {
+            CloseLightbox();
+        }
+        else if (e.Key == "ArrowLeft")
+        {
+            PreviousImage();
+        }
+        else if (e.Key == "ArrowRight")
+        {
+            NextImage();
+        }
+    }
+
+    public void Dispose()
+    {
+        LanguageService.OnLanguageChanged -= StateHasChanged;
+    }
+
+    private class GalleryItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
+    }
+}
+

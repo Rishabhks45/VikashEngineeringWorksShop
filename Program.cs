@@ -1,10 +1,14 @@
 using VikashEngineeringWorksShop.Components;
+using VikashEngineeringWorksShop.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Add Language Service as Singleton so all components share the same instance
+builder.Services.AddSingleton<LanguageService>();
 
 var app = builder.Build();
 

@@ -1,0 +1,129 @@
+@rendermode InteractiveServer
+@using VikashEngineeringWorksShop.Services
+@inject LanguageService LanguageService
+@implements IDisposable
+
+<!-- Sub Navbar -->
+<div class="bg-slate-950 text-gray-400 text-[10px] sm:text-xs py-2 sm:py-2.5 border-b border-slate-800">
+    <div class="container mx-auto px-3 sm:px-4 md:px-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4 md:gap-6">
+            <div class="flex flex-row justify-between items-center gap-3 sm:gap-4 md:gap-6 w-full sm:w-auto">
+                <a href="tel:+919876543210" class="flex items-center gap-1.5 sm:gap-2 hover:text-orange-500 transition duration-300 whitespace-nowrap flex-shrink-0">
+                    <i class="fa-solid fa-phone text-orange-600 text-xs sm:text-sm"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+                <a href="mailto:info@vikashengineering.com" class="flex items-center gap-1.5 sm:gap-2 hover:text-orange-500 transition duration-300 flex-shrink-0">
+                    <i class="fa-solid fa-envelope text-orange-600 text-xs sm:text-sm"></i>
+                    <span class="sm:inline">info@vikashengineering.com</span>
+                </a>
+            </div>
+            <div class="flex flex-row justify-between items-center gap-3 sm:gap-4 md:gap-6 w-full sm:w-auto">
+                <span class="flex items-center gap-1.5 sm:gap-2 cursor-default whitespace-nowrap flex-shrink-0">
+                    <i class="fa-solid fa-clock text-orange-600 text-xs sm:text-sm"></i>
+                    <span class="text-[10px] sm:text-xs">Mon - Sat: 9:00 AM - 7:00 PM</span>
+                </span>
+                <div class="flex items-center gap-2 sm:gap-3 md:gap-4 sm:border-l sm:border-slate-700 sm:pl-4 md:pl-6 flex-shrink-0">
+                    <a href="#" class="hover:text-orange-500 transition duration-300" aria-label="Facebook"><i class="fa-brands fa-facebook-f text-xs sm:text-sm"></i></a>
+                    <a href="#" class="hover:text-orange-500 transition duration-300" aria-label="Twitter"><i class="fa-brands fa-twitter text-xs sm:text-sm"></i></a>
+                    <a href="#" class="hover:text-orange-500 transition duration-300" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in text-xs sm:text-sm"></i></a>
+                    <a href="#" class="hover:text-orange-500 transition duration-300" aria-label="Instagram"><i class="fa-brands fa-instagram text-xs sm:text-sm"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-lg border-b border-orange-600/30">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded text-white w-10 h-10 md:w-12 md:h-12">
+                <img src="/img/logo/logo.png" alt="Vikash Engineering Works Logo" class="w-full h-full object-contain" />
+            </div>
+            <NavLink href="/" class="text-lg md:text-xl font-bold tracking-wide uppercase">@Translations.Get("Vikash Eng. Work Shop", LanguageService.CurrentLanguage)</NavLink>
+        </div>
+                
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide absolute left-1/2 -translate-x-1/2">
+            <NavLink href="/" Match="NavLinkMatch.All" 
+                 ActiveClass="text-orange-500" 
+                 InactiveClass="text-gray-300 hover:text-orange-500" 
+                 class="transition duration-300">
+                @Translations.Get("Home", LanguageService.CurrentLanguage)
+            </NavLink>
+            <NavLink href="/services" 
+                 ActiveClass="text-orange-500" 
+                 InactiveClass="text-gray-300 hover:text-orange-500" 
+                 class="transition duration-300">
+                @Translations.Get("Services", LanguageService.CurrentLanguage)
+            </NavLink>
+            <NavLink href="/products" 
+                 ActiveClass="text-orange-500" 
+                 InactiveClass="text-gray-300 hover:text-orange-500" 
+                 class="transition duration-300">
+                @Translations.Get("Products", LanguageService.CurrentLanguage)
+            </NavLink>
+            <NavLink href="/gallery" 
+                 ActiveClass="text-orange-500" 
+                 InactiveClass="text-gray-300 hover:text-orange-500" 
+                 class="transition duration-300">
+                @Translations.Get("Gallery", LanguageService.CurrentLanguage)
+            </NavLink>
+            <NavLink href="/contact" 
+                 ActiveClass="text-orange-500" 
+                 InactiveClass="text-gray-300 hover:text-orange-500" 
+                 class="transition duration-300">
+                @Translations.Get("Contact", LanguageService.CurrentLanguage)
+            </NavLink>
+            <NavLink href="/about" 
+                 ActiveClass="text-orange-500" 
+                 InactiveClass="text-gray-300 hover:text-orange-500" 
+                 class="transition duration-300">
+                @Translations.Get("About", LanguageService.CurrentLanguage)
+            </NavLink>
+        </div>
+
+        <!-- Language Selector & Icons -->
+        <div class="flex items-center gap-4">
+            <LanguageSelector />
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Bottom Navigation Bar (shown on small screens) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+    <div class="flex items-center justify-around h-16">
+        <NavLink href="/" Match="NavLinkMatch.All" class="flex flex-col items-center justify-center flex-1 h-full" ActiveClass="text-orange-600" InactiveClass="text-gray-600 hover:text-orange-600">
+            <i class="fa-solid fa-home text-xl mb-1"></i>
+            <span class="text-xs font-medium">@Translations.Get("Home", LanguageService.CurrentLanguage)</span>
+        </NavLink>
+        <NavLink href="/services" class="flex flex-col items-center justify-center flex-1 h-full transition-colors" ActiveClass="text-orange-600" InactiveClass="text-gray-600 hover:text-orange-600">
+            <i class="fa-solid fa-wrench text-xl mb-1"></i>
+            <span class="text-xs font-medium">@Translations.Get("Services", LanguageService.CurrentLanguage)</span>
+        </NavLink>
+        <NavLink href="/products" class="flex flex-col items-center justify-center flex-1 h-full transition-colors" ActiveClass="text-orange-600" InactiveClass="text-gray-600 hover:text-orange-600">
+            <i class="fa-solid fa-industry text-xl mb-1"></i>
+            <span class="text-xs font-medium">@Translations.Get("Products", LanguageService.CurrentLanguage)</span>
+        </NavLink>
+        <NavLink href="/gallery" class="flex flex-col items-center justify-center flex-1 h-full transition-colors" ActiveClass="text-orange-600" InactiveClass="text-gray-600 hover:text-orange-600">
+            <i class="fa-solid fa-images text-xl mb-1"></i>
+            <span class="text-xs font-medium">@Translations.Get("Gallery", LanguageService.CurrentLanguage)</span>
+        </NavLink>
+        <NavLink href="/about" class="flex flex-col items-center justify-center flex-1 h-full transition-colors" ActiveClass="text-orange-600" InactiveClass="text-gray-600 hover:text-orange-600">
+            <i class="fa-solid fa-info-circle text-xl mb-1"></i>
+            <span class="text-xs font-medium">@Translations.Get("About", LanguageService.CurrentLanguage)</span>
+        </NavLink>
+    </div>
+</nav>
+
+@code {
+    protected override void OnInitialized()
+    {
+        LanguageService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LanguageService.OnLanguageChanged -= StateHasChanged;
+    }
+}

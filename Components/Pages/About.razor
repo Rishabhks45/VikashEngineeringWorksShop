@@ -1,20 +1,23 @@
 @page "/about"
 @layout ClientLayout
 @rendermode InteractiveServer
+@using VikashEngineeringWorksShop.Services
+@inject LanguageService LanguageService
+@implements IDisposable
 
-<PageTitle>About Us - Vikash Engineering Works Shop</PageTitle>
+<PageTitle>@Translations.Get("About Us", LanguageService.CurrentLanguage) - @Translations.Get("Vikash Eng. Work Shop", LanguageService.CurrentLanguage)</PageTitle>
 
 <div class="container mx-auto px-6 py-12 sm:py-16 md:py-20">
     <!-- Hero Section -->
     <div class="text-center mb-12 sm:mb-16">
         <div class="flex items-center justify-center gap-2 mb-4">
             <span class="w-12 h-[2px] bg-orange-600"></span>
-            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">About Us</h3>
+            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">@Translations.Get("About Us", LanguageService.CurrentLanguage)</h3>
             <span class="w-12 h-[2px] bg-orange-600"></span>
         </div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">Mastering the Art of Industrial Fabrication</h1>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">@Translations.Get("Mastering the Art of Industrial Fabrication", LanguageService.CurrentLanguage)</h1>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-            Vikash Engineering Works Shop is a pioneer in delivering top-tier engineering solutions. From heavy machinery to precision tools, we ensure that every project meets the highest industry standards.
+            @Translations.Get("Vikash Engineering Works Shop is a pioneer in delivering top-tier engineering solutions. From heavy machinery to precision tools, we ensure that every project meets the highest industry standards of quality, safety, and durability.", LanguageService.CurrentLanguage)
         </p>
     </div>
 
@@ -27,19 +30,19 @@
                 <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Workshop" class="rounded-lg shadow-2xl w-full object-cover h-80 md:h-96">
                 <div class="absolute -bottom-6 -right-6 bg-slate-900 text-white p-6 rounded-lg shadow-xl hidden md:block border-l-4 border-orange-500">
                     <p class="text-3xl font-bold text-orange-500">15+</p>
-                    <p class="text-xs uppercase tracking-widest text-gray-400">Years of<br>Experience</p>
+                    <p class="text-xs uppercase tracking-widest text-gray-400">@Translations.Get("Years of", LanguageService.CurrentLanguage)<br>@Translations.Get("Experience", LanguageService.CurrentLanguage)</p>
                 </div>
             </div>
         </div>
 
         <!-- Content Section -->
         <div>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6">Who We Are</h2>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6">@Translations.Get("Who We Are", LanguageService.CurrentLanguage)</h2>
             <p class="text-gray-600 leading-relaxed mb-6 text-base sm:text-lg">
-                Vikash Engineering Works Shop is a leading provider of engineering solutions, committed to delivering excellence in every project. With years of experience in the industry, we have built a reputation for quality, reliability, and customer satisfaction.
+                @Translations.Get("Vikash Engineering Works Shop is a leading provider of engineering solutions, committed to delivering excellence in every project. With years of experience in the industry, we have built a reputation for quality, reliability, and customer satisfaction.", LanguageService.CurrentLanguage)
             </p>
             <p class="text-gray-600 leading-relaxed mb-8 text-base sm:text-lg">
-                Our team of expert engineers and technicians work tirelessly to provide innovative solutions that meet the diverse needs of our customers while maintaining the highest standards of quality and professionalism.
+                @Translations.Get("Our team of expert engineers and technicians work tirelessly to provide innovative solutions that meet the diverse needs of our customers while maintaining the highest standards of quality and professionalism.", LanguageService.CurrentLanguage)
             </p>
         </div>
     </div>
@@ -51,9 +54,9 @@
             <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
                 <i class="fa-solid fa-bullseye text-orange-600 text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">@Translations.Get("Our Mission", LanguageService.CurrentLanguage)</h3>
             <p class="text-gray-600 leading-relaxed">
-                To provide high-quality engineering products and services that meet the diverse needs of our customers while maintaining the highest standards of quality and professionalism.
+                @Translations.Get("To provide high-quality engineering products and services that meet the diverse needs of our customers while maintaining the highest standards of quality and professionalism.", LanguageService.CurrentLanguage)
             </p>
         </div>
 
@@ -62,44 +65,44 @@
             <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
                 <i class="fa-solid fa-eye text-blue-600 text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-4">Our Vision</h3>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">@Translations.Get("Our Vision", LanguageService.CurrentLanguage)</h3>
             <p class="text-gray-600 leading-relaxed">
-                To become the most trusted and innovative engineering solutions provider, recognized for excellence, integrity, and customer-centric approach in the industry.
+                @Translations.Get("To become the most trusted and innovative engineering solutions provider, recognized for excellence, integrity, and customer-centric approach in the industry.", LanguageService.CurrentLanguage)
             </p>
         </div>
     </div>
 
     <!-- Values -->
     <div class="mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-8 text-center">Our Core Values</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-8 text-center">@Translations.Get("Our Core Values", LanguageService.CurrentLanguage)</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
                 <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fa-solid fa-circle-check text-green-600 text-2xl"></i>
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 mb-2">Quality First</h4>
-                <p class="text-gray-600 text-sm">Uncompromising commitment to excellence in every project</p>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">@Translations.Get("Quality First", LanguageService.CurrentLanguage)</h4>
+                <p class="text-gray-600 text-sm">@Translations.Get("Uncompromising commitment to excellence in every project", LanguageService.CurrentLanguage)</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
                 <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fa-solid fa-heart text-orange-600 text-2xl"></i>
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 mb-2">Customer Satisfaction</h4>
-                <p class="text-gray-600 text-sm">Your success is our priority and ultimate goal</p>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">@Translations.Get("Customer Satisfaction", LanguageService.CurrentLanguage)</h4>
+                <p class="text-gray-600 text-sm">@Translations.Get("Your success is our priority and ultimate goal", LanguageService.CurrentLanguage)</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
                 <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fa-solid fa-lightbulb text-blue-600 text-2xl"></i>
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 mb-2">Innovation</h4>
-                <p class="text-gray-600 text-sm">Embracing new technologies and creative solutions</p>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">@Translations.Get("Innovation", LanguageService.CurrentLanguage)</h4>
+                <p class="text-gray-600 text-sm">@Translations.Get("Embracing new technologies and creative solutions", LanguageService.CurrentLanguage)</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
                 <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fa-solid fa-shield-halved text-slate-600 text-2xl"></i>
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 mb-2">Integrity</h4>
-                <p class="text-gray-600 text-sm">Transparent, honest, and ethical in all dealings</p>
+                <h4 class="text-xl font-bold text-slate-900 mb-2">@Translations.Get("Integrity", LanguageService.CurrentLanguage)</h4>
+                <p class="text-gray-600 text-sm">@Translations.Get("Transparent, honest, and ethical in all dealings", LanguageService.CurrentLanguage)</p>
             </div>
         </div>
     </div>
@@ -108,19 +111,31 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
         <div class="text-center">
             <p class="text-3xl sm:text-4xl font-bold text-slate-900">500+</p>
-            <p class="text-sm text-gray-500 mt-1">Projects Completed</p>
+            <p class="text-sm text-gray-500 mt-1">@Translations.Get("Projects Completed", LanguageService.CurrentLanguage)</p>
         </div>
         <div class="text-center">
             <p class="text-3xl sm:text-4xl font-bold text-slate-900">120+</p>
-            <p class="text-sm text-gray-500 mt-1">Happy Clients</p>
+            <p class="text-sm text-gray-500 mt-1">@Translations.Get("Happy Clients", LanguageService.CurrentLanguage)</p>
         </div>
         <div class="text-center">
             <p class="text-3xl sm:text-4xl font-bold text-slate-900">50+</p>
-            <p class="text-sm text-gray-500 mt-1">Expert Engineers</p>
+            <p class="text-sm text-gray-500 mt-1">@Translations.Get("Expert Engineers", LanguageService.CurrentLanguage)</p>
         </div>
         <div class="text-center">
             <p class="text-3xl sm:text-4xl font-bold text-slate-900">15</p>
-            <p class="text-sm text-gray-500 mt-1">Awards Won</p>
+            <p class="text-sm text-gray-500 mt-1">@Translations.Get("Awards Won", LanguageService.CurrentLanguage)</p>
         </div>
     </div>
 </div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        LanguageService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LanguageService.OnLanguageChanged -= StateHasChanged;
+    }
+}

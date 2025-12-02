@@ -1,50 +1,53 @@
 @page "/contact"
 @layout ClientLayout
 @rendermode InteractiveServer
+@using VikashEngineeringWorksShop.Services
+@inject LanguageService LanguageService
+@implements IDisposable
 
-<PageTitle>Contact Us - Vikash Engineering Works Shop</PageTitle>
+<PageTitle>@Translations.Get("Contact", LanguageService.CurrentLanguage) - @Translations.Get("Vikash Eng. Work Shop", LanguageService.CurrentLanguage)</PageTitle>
 
 <div class="container mx-auto px-6 py-12 sm:py-16 md:py-20">
     <!-- Hero Section -->
     <div class="text-center mb-12 sm:mb-16">
         <div class="flex items-center justify-center gap-2 mb-4">
             <span class="w-12 h-[2px] bg-orange-600"></span>
-            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">Get In Touch</h3>
+            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">@Translations.Get("Get In Touch", LanguageService.CurrentLanguage)</h3>
             <span class="w-12 h-[2px] bg-orange-600"></span>
         </div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">Contact Us</h1>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">@Translations.Get("Contact Us", LanguageService.CurrentLanguage)</h1>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-            Have a question or need assistance? We're here to help. Reach out to us and we'll get back to you as soon as possible.
+            @Translations.Get("Have a question or need assistance? We're here to help. Reach out to us and we'll get back to you as soon as possible.", LanguageService.CurrentLanguage)
         </p>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
         <!-- Contact Form -->
         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8">
-            <h2 class="text-2xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">@Translations.Get("Send Us a Message", LanguageService.CurrentLanguage)</h2>
             <form class="space-y-5">
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Name <span class="text-orange-600">*</span></label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Name", LanguageService.CurrentLanguage) <span class="text-orange-600">*</span></label>
                     <input type="text" @bind="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="Your full name" />
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email <span class="text-orange-600">*</span></label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Email", LanguageService.CurrentLanguage) <span class="text-orange-600">*</span></label>
                     <input type="email" @bind="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="your.email@example.com" />
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Phone", LanguageService.CurrentLanguage)</label>
                     <input type="tel" @bind="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="+91 98765 43210" />
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Subject", LanguageService.CurrentLanguage)</label>
                     <input type="text" @bind="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="What is this regarding?" />
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Message <span class="text-orange-600">*</span></label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Message", LanguageService.CurrentLanguage) <span class="text-orange-600">*</span></label>
                     <textarea @bind="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition resize-none" placeholder="Tell us about your requirements..."></textarea>
                 </div>
                 <button type="submit" class="w-full bg-slate-900 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group">
-                    <span>Send Message</span>
+                    <span>@Translations.Get("Send Message", LanguageService.CurrentLanguage)</span>
                     <i class="fa-solid fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
                 </button>
             </form>
@@ -54,14 +57,14 @@
         <div class="space-y-6">
             <!-- Contact Info Card -->
             <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-slate-900 mb-6">Contact Information</h2>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">@Translations.Get("Contact Information", LanguageService.CurrentLanguage)</h2>
                 <div class="space-y-5">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <i class="fa-solid fa-location-dot text-orange-600 text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Address</h3>
+                            <h3 class="font-semibold text-slate-900 mb-1">@Translations.Get("Address", LanguageService.CurrentLanguage)</h3>
                             <p class="text-gray-600">123 Industrial Area, City, State 123456</p>
                         </div>
                     </div>
@@ -70,7 +73,7 @@
                             <i class="fa-solid fa-phone text-blue-600 text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Phone</h3>
+                            <h3 class="font-semibold text-slate-900 mb-1">@Translations.Get("Phone", LanguageService.CurrentLanguage)</h3>
                             <a href="tel:+919876543210" class="text-gray-600 hover:text-orange-600 transition">+91 98765 43210</a>
                         </div>
                     </div>
@@ -79,7 +82,7 @@
                             <i class="fa-solid fa-envelope text-green-600 text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Email</h3>
+                            <h3 class="font-semibold text-slate-900 mb-1">@Translations.Get("Email", LanguageService.CurrentLanguage)</h3>
                             <a href="mailto:info@vikashengineering.com" class="text-gray-600 hover:text-orange-600 transition break-all">info@vikashengineering.com</a>
                         </div>
                     </div>
@@ -88,7 +91,7 @@
                             <i class="fa-solid fa-clock text-purple-600 text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Business Hours</h3>
+                            <h3 class="font-semibold text-slate-900 mb-1">@Translations.Get("Business Hours", LanguageService.CurrentLanguage)</h3>
                             <p class="text-gray-600">Mon - Sat: 9:00 AM - 7:00 PM</p>
                             <p class="text-gray-600 text-sm">Sunday: Closed</p>
                         </div>
@@ -98,8 +101,8 @@
 
             <!-- Social Media Card -->
             <div class="bg-slate-900 rounded-2xl shadow-lg p-6 sm:p-8 text-white">
-                <h2 class="text-2xl font-bold mb-4">Follow Us</h2>
-                <p class="text-gray-300 mb-6">Stay connected with us on social media for updates and news.</p>
+                <h2 class="text-2xl font-bold mb-4">@Translations.Get("Follow Us", LanguageService.CurrentLanguage)</h2>
+                <p class="text-gray-300 mb-6">@Translations.Get("Stay connected with us on social media for updates and news.", LanguageService.CurrentLanguage)</p>
                 <div class="flex items-center gap-4">
                     <a href="#" class="w-12 h-12 bg-white/10 hover:bg-orange-600 rounded-lg flex items-center justify-center transition" aria-label="Facebook">
                         <i class="fa-brands fa-facebook-f"></i>
@@ -135,4 +138,14 @@
     private string phone = string.Empty;
     private string subject = string.Empty;
     private string message = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        LanguageService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LanguageService.OnLanguageChanged -= StateHasChanged;
+    }
 }

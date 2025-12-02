@@ -1,20 +1,23 @@
 @page "/services"
 @layout ClientLayout
 @rendermode InteractiveServer
+@using VikashEngineeringWorksShop.Services
+@inject LanguageService LanguageService
+@implements IDisposable
 
-<PageTitle>Services - Vikash Engineering Works Shop</PageTitle>
+<PageTitle>@Translations.Get("Services", LanguageService.CurrentLanguage) - @Translations.Get("Vikash Eng. Work Shop", LanguageService.CurrentLanguage)</PageTitle>
 
 <div class="container mx-auto px-6 py-12 sm:py-16 md:py-20">
     <!-- Hero Section -->
     <div class="text-center mb-12 sm:mb-16">
         <div class="flex items-center justify-center gap-2 mb-4">
             <span class="w-12 h-[2px] bg-orange-600"></span>
-            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">Our Services</h3>
+            <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">@Translations.Get("Our Services", LanguageService.CurrentLanguage)</h3>
             <span class="w-12 h-[2px] bg-orange-600"></span>
         </div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">Comprehensive Engineering Solutions</h1>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6">@Translations.Get("Comprehensive Engineering Solutions", LanguageService.CurrentLanguage)</h1>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-            We provide comprehensive maintenance, custom fabrication, CNC machining, and emergency repair solutions designed to keep your operations running smoothly.
+            @Translations.Get("We provide comprehensive maintenance, custom fabrication, CNC machining, and emergency repair solutions designed to keep your operations running smoothly.", LanguageService.CurrentLanguage)
         </p>
     </div>
 
@@ -27,26 +30,26 @@
                 <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-300 shadow-sm">
                     <i class="fa-solid fa-wrench text-blue-600 text-2xl group-hover:text-white transition"></i>
                 </div>
-                <h2 class="text-2xl font-bold mb-3 text-slate-900">CNC Machining</h2>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">@Translations.Get("CNC Machining", LanguageService.CurrentLanguage)</h2>
                 <p class="text-gray-600 mb-6 leading-relaxed">
-                    Precision CNC machining services for complex parts and components. Our state-of-the-art equipment ensures accuracy and consistency in every project.
+                    @Translations.Get("Precision CNC machining services for complex parts and components. Our state-of-the-art equipment ensures accuracy and consistency in every project.", LanguageService.CurrentLanguage)
                 </p>
                 <ul class="space-y-2 mb-6 text-sm text-gray-600">
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>3-Axis & 5-Axis Machining</span>
+                        <span>@Translations.Get("3-Axis & 5-Axis Machining", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Prototype Development</span>
+                        <span>@Translations.Get("Prototype Development", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Quality Assurance</span>
+                        <span>@Translations.Get("Quality Assurance", LanguageService.CurrentLanguage)</span>
                     </li>
                 </ul>
                 <button class="w-full py-3 rounded-xl border-2 border-blue-600 text-blue-700 font-bold hover:bg-blue-600 hover:text-white transition duration-300">
-                    Learn More
+                    @Translations.Get("Learn More", LanguageService.CurrentLanguage)
                 </button>
             </div>
         </div>
@@ -58,26 +61,26 @@
                 <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-600 transition duration-300 shadow-sm">
                     <i class="fa-solid fa-hammer text-orange-600 text-2xl group-hover:text-white transition"></i>
                 </div>
-                <h2 class="text-2xl font-bold mb-3 text-slate-900">Custom Fabrication</h2>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">@Translations.Get("Custom Fabrication", LanguageService.CurrentLanguage)</h2>
                 <p class="text-gray-600 mb-6 leading-relaxed">
-                    Custom fabrication services for specialized engineering requirements. From design to completion, we handle projects of all sizes.
+                    @Translations.Get("Custom fabrication services for specialized engineering requirements. From design to completion, we handle projects of all sizes.", LanguageService.CurrentLanguage)
                 </p>
                 <ul class="space-y-2 mb-6 text-sm text-gray-600">
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Metal Fabrication</span>
+                        <span>@Translations.Get("Metal Fabrication", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Welding Services</span>
+                        <span>@Translations.Get("Welding Services", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Custom Design</span>
+                        <span>@Translations.Get("Custom Design", LanguageService.CurrentLanguage)</span>
                     </li>
                 </ul>
                 <button class="w-full py-3 rounded-xl border-2 border-orange-600 text-orange-700 font-bold hover:bg-orange-600 hover:text-white transition duration-300">
-                    Learn More
+                    @Translations.Get("Learn More", LanguageService.CurrentLanguage)
                 </button>
             </div>
         </div>
@@ -89,26 +92,26 @@
                 <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition duration-300 shadow-sm">
                     <i class="fa-solid fa-tools text-green-600 text-2xl group-hover:text-white transition"></i>
                 </div>
-                <h2 class="text-2xl font-bold mb-3 text-slate-900">Maintenance & Repair</h2>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">@Translations.Get("Maintenance & Repair", LanguageService.CurrentLanguage)</h2>
                 <p class="text-gray-600 mb-6 leading-relaxed">
-                    Expert maintenance and repair services for all engineering equipment. 24/7 support to keep your operations running smoothly.
+                    @Translations.Get("Expert maintenance and repair services for all engineering equipment. 24/7 support to keep your operations running smoothly.", LanguageService.CurrentLanguage)
                 </p>
                 <ul class="space-y-2 mb-6 text-sm text-gray-600">
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Preventive Maintenance</span>
+                        <span>@Translations.Get("Preventive Maintenance", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Emergency Repairs</span>
+                        <span>@Translations.Get("Emergency Repairs", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>24/7 Support</span>
+                        <span>@Translations.Get("24/7 Support", LanguageService.CurrentLanguage)</span>
                     </li>
                 </ul>
                 <button class="w-full py-3 rounded-xl border-2 border-green-600 text-green-700 font-bold hover:bg-green-600 hover:text-white transition duration-300">
-                    Learn More
+                    @Translations.Get("Learn More", LanguageService.CurrentLanguage)
                 </button>
             </div>
         </div>
@@ -120,26 +123,26 @@
                 <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition duration-300 shadow-sm">
                     <i class="fa-solid fa-user-tie text-purple-600 text-2xl group-hover:text-white transition"></i>
                 </div>
-                <h2 class="text-2xl font-bold mb-3 text-slate-900">Consultation</h2>
+                <h2 class="text-2xl font-bold mb-3 text-slate-900">@Translations.Get("Consultation", LanguageService.CurrentLanguage)</h2>
                 <p class="text-gray-600 mb-6 leading-relaxed">
-                    Expert consultation services for your engineering projects. Get professional advice and solutions tailored to your needs.
+                    @Translations.Get("Expert consultation services for your engineering projects. Get professional advice and solutions tailored to your needs.", LanguageService.CurrentLanguage)
                 </p>
                 <ul class="space-y-2 mb-6 text-sm text-gray-600">
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Project Planning</span>
+                        <span>@Translations.Get("Project Planning", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Technical Advice</span>
+                        <span>@Translations.Get("Technical Advice", LanguageService.CurrentLanguage)</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <i class="fa-solid fa-check text-green-500"></i>
-                        <span>Cost Optimization</span>
+                        <span>@Translations.Get("Cost Optimization", LanguageService.CurrentLanguage)</span>
                     </li>
                 </ul>
                 <button class="w-full py-3 rounded-xl border-2 border-purple-600 text-purple-700 font-bold hover:bg-purple-600 hover:text-white transition duration-300">
-                    Learn More
+                    @Translations.Get("Learn More", LanguageService.CurrentLanguage)
                 </button>
             </div>
         </div>
@@ -147,12 +150,24 @@
 
     <!-- CTA Section -->
     <div class="bg-slate-900 text-white p-8 sm:p-12 rounded-2xl text-center">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Get Started?</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">@Translations.Get("Ready to Get Started?", LanguageService.CurrentLanguage)</h2>
         <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Contact us today to discuss your engineering needs and discover how we can help bring your project to life.
+            @Translations.Get("Contact us today to discuss your engineering needs and discover how we can help bring your project to life.", LanguageService.CurrentLanguage)
         </p>
         <a href="/contact" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1">
-            Contact Us Now
+            @Translations.Get("Contact Us Now", LanguageService.CurrentLanguage)
         </a>
     </div>
 </div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        LanguageService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LanguageService.OnLanguageChanged -= StateHasChanged;
+    }
+}

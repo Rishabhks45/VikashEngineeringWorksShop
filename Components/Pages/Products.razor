@@ -1,8 +1,11 @@
 @page "/products"
 @layout ClientLayout
 @rendermode InteractiveServer
+@using VikashEngineeringWorksShop.Services
+@inject LanguageService LanguageService
+@implements IDisposable
 
-<PageTitle>Products - Vikash Engineering Works Shop</PageTitle>
+<PageTitle>@Translations.Get("Products", LanguageService.CurrentLanguage) - @Translations.Get("Vikash Eng. Work Shop", LanguageService.CurrentLanguage)</PageTitle>
 
 <div class="container mx-auto px-6 py-12">
     <!-- Latest Products Section -->
@@ -10,14 +13,14 @@
         <div class="text-center mb-8">
             <div class="flex items-center justify-center gap-2 mb-4">
                 <span class="w-12 h-[2px] bg-orange-600"></span>
-                <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">Latest Products</h3>
+                <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">@Translations.Get("Latest Products", LanguageService.CurrentLanguage)</h3>
                 <span class="w-12 h-[2px] bg-orange-600"></span>
             </div>
-            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">New Arrivals</h2>
-            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover our newest engineering solutions and cutting-edge products</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">@Translations.Get("New Arrivals", LanguageService.CurrentLanguage)</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">@Translations.Get("Discover our newest engineering solutions and cutting-edge products", LanguageService.CurrentLanguage)</p>
         </div>
 
-        <div class="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             @foreach (var product in latestProducts)
             {
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-100 flex flex-col">
@@ -25,7 +28,7 @@
                     <div class="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-100">
                         <img src="@product.ImageUrl" alt="@product.Name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                         <div class="absolute top-2 left-2 bg-orange-600 text-white px-2 py-1 rounded-full text-[10px] sm:text-xs font-semibold">
-                            New
+                            @Translations.Get("New", LanguageService.CurrentLanguage)
                         </div>
                         <div class="absolute top-2 right-2 bg-slate-900/70 text-white px-2 py-1 rounded-full text-[10px] sm:text-xs font-semibold">
                             @product.Category
@@ -49,13 +52,13 @@
                             <p class="text-base sm:text-lg md:text-2xl font-bold text-orange-600 mb-1">
                                 ₹@FormatPrice(product.MinPrice) - ₹@FormatPrice(product.MaxPrice)
                             </p>
-                            <p class="text-[10px] sm:text-xs text-gray-500">Price Range</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500">@Translations.Get("Price Range", LanguageService.CurrentLanguage)</p>
                         </div>
 
                         <!-- Contact Us Button -->
                         <button @onclick="() => ContactUs(product.Id)" class="w-full bg-slate-900 text-white font-semibold py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-6 rounded-lg hover:bg-orange-600 transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 group/btn text-xs sm:text-sm md:text-base">
                             <i class="fa-solid fa-phone text-xs sm:text-sm"></i>
-                            <span>Contact Us</span>
+                            <span>@Translations.Get("Contact Us", LanguageService.CurrentLanguage)</span>
                             <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-xs sm:text-sm"></i>
                         </button>
                     </div>
@@ -69,14 +72,14 @@
         <div class="text-center mb-12">
             <div class="flex items-center justify-center gap-2 mb-4">
                 <span class="w-12 h-[2px] bg-orange-600"></span>
-                <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">All Products</h3>
+                <h3 class="text-orange-600 font-bold uppercase tracking-wider text-sm">@Translations.Get("All Products", LanguageService.CurrentLanguage)</h3>
                 <span class="w-12 h-[2px] bg-orange-600"></span>
             </div>
-            <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Our Products</h1>
-            <p class="text-gray-600 text-lg">Browse our wide range of engineering products and solutions</p>
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">@Translations.Get("Our Products", LanguageService.CurrentLanguage)</h1>
+            <p class="text-gray-600 text-lg">@Translations.Get("Browse our wide range of engineering products and solutions", LanguageService.CurrentLanguage)</p>
         </div>
 
-    <div class="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
         @foreach (var product in products)
         {
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-100 flex flex-col">
@@ -105,13 +108,13 @@
                         <p class="text-base sm:text-lg md:text-2xl font-bold text-orange-600 mb-1">
                             ₹@FormatPrice(product.MinPrice) - ₹@FormatPrice(product.MaxPrice)
                         </p>
-                        <p class="text-[10px] sm:text-xs text-gray-500">Price Range</p>
+                        <p class="text-[10px] sm:text-xs text-gray-500">@Translations.Get("Price Range", LanguageService.CurrentLanguage)</p>
                     </div>
 
                     <!-- Contact Us Button -->
                     <button @onclick="() => ContactUs(product.Id)" class="w-full bg-slate-900 text-white font-semibold py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-6 rounded-lg hover:bg-orange-600 transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 group/btn text-xs sm:text-sm md:text-base">
                         <i class="fa-solid fa-phone text-xs sm:text-sm"></i>
-                        <span>Contact Us</span>
+                        <span>@Translations.Get("Contact Us", LanguageService.CurrentLanguage)</span>
                         <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-xs sm:text-sm"></i>
                     </button>
                 </div>
@@ -127,6 +130,8 @@
 
     protected override void OnInitialized()
     {
+        LanguageService.OnLanguageChanged += StateHasChanged;
+        
         // Sample data - replace with actual data from your service
         latestProducts = new List<Product>
         {
@@ -242,6 +247,11 @@
             return (price / 1000).ToString("0") + "K";
         else
             return price.ToString("0");
+    }
+
+    public void Dispose()
+    {
+        LanguageService.OnLanguageChanged -= StateHasChanged;
     }
 
     private class Product
