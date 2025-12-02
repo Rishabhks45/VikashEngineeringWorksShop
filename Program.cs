@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// Add HttpClient for external API calls
+builder.Services.AddHttpClient();
+
 // Add Language Service as Singleton so all components share the same instance
 builder.Services.AddSingleton<LanguageService>();
 

@@ -122,6 +122,13 @@ public static class Translations
             ["Business Hours"] = "Business Hours",
             ["Follow Us"] = "Follow Us",
             ["Stay connected with us on social media for updates and news."] = "Stay connected with us on social media for updates and news.",
+            ["Sending..."] = "Sending...",
+            ["Please enter your name."] = "Please enter your name.",
+            ["Please enter a valid email address."] = "Please enter a valid email address.",
+            ["Please enter your message."] = "Please enter your message.",
+            ["Configuration error. Please contact the administrator."] = "Configuration error. Please contact the administrator.",
+            ["Thank you! Your message has been sent successfully. We'll get back to you soon."] = "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+            ["Sorry, there was an error sending your message. Please try again later."] = "Sorry, there was an error sending your message. Please try again later.",
             
             // Products Page
             ["Latest Products"] = "Latest Products",
@@ -249,6 +256,13 @@ public static class Translations
             ["Business Hours"] = "व्यापार घंटे",
             ["Follow Us"] = "हमें फॉलो करें",
             ["Stay connected with us on social media for updates and news."] = "अपडेट और समाचार के लिए सोशल मीडिया पर हमारे साथ जुड़े रहें।",
+            ["Sending..."] = "भेज रहे हैं...",
+            ["Please enter your name."] = "कृपया अपना नाम दर्ज करें।",
+            ["Please enter a valid email address."] = "कृपया एक वैध ईमेल पता दर्ज करें।",
+            ["Please enter your message."] = "कृपया अपना संदेश दर्ज करें।",
+            ["Configuration error. Please contact the administrator."] = "कॉन्फ़िगरेशन त्रुटि। कृपया व्यवस्थापक से संपर्क करें।",
+            ["Thank you! Your message has been sent successfully. We'll get back to you soon."] = "धन्यवाद! आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही आपसे संपर्क करेंगे।",
+            ["Sorry, there was an error sending your message. Please try again later."] = "क्षमा करें, आपका संदेश भेजने में त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।",
             
             // Products Page
             ["Latest Products"] = "नवीनतम उत्पाद",

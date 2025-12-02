@@ -2,7 +2,10 @@
 @layout ClientLayout
 @rendermode InteractiveServer
 @using VikashEngineeringWorksShop.Services
+@using Microsoft.Extensions.Configuration
 @inject LanguageService LanguageService
+@inject HttpClient Http
+@inject IConfiguration Configuration
 @implements IDisposable
 
 <PageTitle>@Translations.Get("Contact", LanguageService.CurrentLanguage) - @Translations.Get("Vikash Eng. Work Shop", LanguageService.CurrentLanguage)</PageTitle>
@@ -25,30 +28,52 @@
         <!-- Contact Form -->
         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8">
             <h2 class="text-2xl font-bold text-slate-900 mb-6">@Translations.Get("Send Us a Message", LanguageService.CurrentLanguage)</h2>
-            <form class="space-y-5">
+            <form @onsubmit="HandleSubmit" @onsubmit:preventDefault="true" class="space-y-5">
+                @if (!string.IsNullOrEmpty(successMessage))
+                {
+                    <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg flex items-center gap-2">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>@successMessage</span>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg flex items-center gap-2">
+                        <i class="fa-solid fa-exclamation-circle"></i>
+                        <span>@errorMessage</span>
+                    </div>
+                }
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Name", LanguageService.CurrentLanguage) <span class="text-orange-600">*</span></label>
-                    <input type="text" @bind="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="Your full name" />
+                    <input type="text" @bind="name" disabled="@isSubmitting" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition disabled:opacity-50 disabled:cursor-not-allowed" placeholder="Your full name" />
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Email", LanguageService.CurrentLanguage) <span class="text-orange-600">*</span></label>
-                    <input type="email" @bind="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="your.email@example.com" />
+                    <input type="email" @bind="email" disabled="@isSubmitting" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition disabled:opacity-50 disabled:cursor-not-allowed" placeholder="your.email@example.com" />
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Phone", LanguageService.CurrentLanguage)</label>
-                    <input type="tel" @bind="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="+91 98765 43210" />
+                    <input type="tel" @bind="phone" disabled="@isSubmitting" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition disabled:opacity-50 disabled:cursor-not-allowed" placeholder="+91 98765 43210" />
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Subject", LanguageService.CurrentLanguage)</label>
-                    <input type="text" @bind="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" placeholder="What is this regarding?" />
+                    <input type="text" @bind="subject" disabled="@isSubmitting" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition disabled:opacity-50 disabled:cursor-not-allowed" placeholder="What is this regarding?" />
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">@Translations.Get("Message", LanguageService.CurrentLanguage) <span class="text-orange-600">*</span></label>
-                    <textarea @bind="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition resize-none" placeholder="Tell us about your requirements..."></textarea>
+                    <textarea @bind="message" rows="5" disabled="@isSubmitting" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition resize-none disabled:opacity-50 disabled:cursor-not-allowed" placeholder="Tell us about your requirements..."></textarea>
                 </div>
-                <button type="submit" class="w-full bg-slate-900 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group">
-                    <span>@Translations.Get("Send Message", LanguageService.CurrentLanguage)</span>
-                    <i class="fa-solid fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                <button type="submit" disabled="@isSubmitting" class="w-full bg-slate-900 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed">
+                    @if (isSubmitting)
+                    {
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <span>@Translations.Get("Sending...", LanguageService.CurrentLanguage)</span>
+                    }
+                    else
+                    {
+                        <span>@Translations.Get("Send Message", LanguageService.CurrentLanguage)</span>
+                        <i class="fa-solid fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                    }
                 </button>
             </form>
         </div>
@@ -138,10 +163,118 @@
     private string phone = string.Empty;
     private string subject = string.Empty;
     private string message = string.Empty;
+    private bool isSubmitting = false;
+    private string successMessage = string.Empty;
+    private string errorMessage = string.Empty;
 
     protected override void OnInitialized()
     {
         LanguageService.OnLanguageChanged += StateHasChanged;
+    }
+
+    private async Task HandleSubmit()
+    {
+        // Clear previous messages
+        successMessage = string.Empty;
+        errorMessage = string.Empty;
+
+        // Validation
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            errorMessage = Translations.Get("Please enter your name.", LanguageService.CurrentLanguage);
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
+        {
+            errorMessage = Translations.Get("Please enter a valid email address.", LanguageService.CurrentLanguage);
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            errorMessage = Translations.Get("Please enter your message.", LanguageService.CurrentLanguage);
+            return;
+        }
+
+        isSubmitting = true;
+        StateHasChanged();
+
+        try
+        {
+            var googleAppsScriptUrl = Configuration["GoogleAppsScript:WebAppUrl"];
+            
+            if (string.IsNullOrEmpty(googleAppsScriptUrl))
+            {
+                errorMessage = Translations.Get("Configuration error. Please contact the administrator.", LanguageService.CurrentLanguage);
+                isSubmitting = false;
+                StateHasChanged();
+                return;
+            }
+
+            var formData = new
+            {
+                name = name.Trim(),
+                email = email.Trim(),
+                phone = string.IsNullOrWhiteSpace(phone) ? "" : phone.Trim(),
+                subject = string.IsNullOrWhiteSpace(subject) ? "" : subject.Trim(),
+                message = message.Trim(),
+                timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            };
+
+            var response = await Http.PostAsJsonAsync(googleAppsScriptUrl, formData);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Try to parse the response to check if Google Apps Script returned success
+                try
+                {
+                    var jsonResponse = System.Text.Json.JsonSerializer.Deserialize<System.Text.Json.JsonElement>(responseContent);
+                    if (jsonResponse.TryGetProperty("success", out var success) && success.GetBoolean())
+                    {
+                        successMessage = Translations.Get("Thank you! Your message has been sent successfully. We'll get back to you soon.", LanguageService.CurrentLanguage);
+                        // Clear form
+                        name = string.Empty;
+                        email = string.Empty;
+                        phone = string.Empty;
+                        subject = string.Empty;
+                        message = string.Empty;
+                    }
+                    else if (jsonResponse.TryGetProperty("message", out var errorMsg))
+                    {
+                        errorMessage = $"Error: {errorMsg.GetString()}";
+                        Console.WriteLine($"Google Apps Script error: {responseContent}");
+                    }
+                }
+                catch
+                {
+                    // If response parsing fails, assume success (some Google Apps Script responses might not be JSON)
+                    successMessage = Translations.Get("Thank you! Your message has been sent successfully. We'll get back to you soon.", LanguageService.CurrentLanguage);
+                    name = string.Empty;
+                    email = string.Empty;
+                    phone = string.Empty;
+                    subject = string.Empty;
+                    message = string.Empty;
+                }
+            }
+            else
+            {
+                errorMessage = $"Error: {response.StatusCode}. Response: {responseContent}";
+                Console.WriteLine($"Contact form submission failed. Status: {response.StatusCode}, Response: {responseContent}");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = Translations.Get("Sorry, there was an error sending your message. Please try again later.", LanguageService.CurrentLanguage);
+            // Log error in production
+            Console.WriteLine($"Error submitting contact form: {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+            StateHasChanged();
+        }
     }
 
     public void Dispose()
